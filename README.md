@@ -8,7 +8,7 @@
 <br>
 
 <p align="center">
-  <img alt="Lista de tarefas" src="./img/pagina-login.png" width="100%">
+  <img alt="Lista de tarefas" src="./img/pagina-de-tarefas.png" width="100%">
 </p>
 
 ## Tecnologias
