@@ -6,9 +6,9 @@ let listaItens = [];
 
 function novaTask() {
   listaItens.push({
-    tarefa: input.value,
-    concluida: false;
-  })
+    tarefaCon: input.value,
+    concluida: false,
+  });
 
   input.value = "";
 
@@ -19,11 +19,9 @@ function mostrarTask() {
   let novaLi = "";
 
   listaItens.forEach((tarefa, posicao) => {
-    novaLi =
-      novaLi +
-      `
-      <li class="task ${tarefa.concluida && "done"}">
-      <img src="./img/checked.png" alt="check" onclick="concluirTarefa(${posicao})">
+    novaLi += `
+      <li class="task ${tarefa.concluida ? "done" : ""}">
+      <img src="./img/checked.png" alt="check" onclick="concluirTarefa(${posicao})"/>
       <p>${tarefa.tarefaCon}</p>
       <img src="./img/trash.png" alt="lixo" onclick="deletarItens(${posicao})">
       </li>
@@ -31,16 +29,33 @@ function mostrarTask() {
   });
 
   listaCompleta.innerHTML = novaLi;
+
+  localStorage.setItem("lista", JSON.stringify(listaItens));
 }
 
 function concluirTarefa(posicao) {
-  listaItens[posicao].concluida = !listaItens[posicao].concluida
+  if (listaItens[posicao]) {
+    listaItens[posicao].concluida = !listaItens[posicao].concluida;
+    mostrarTask();
+  }
 }
 
 function deletarItens(posicao) {
-  listaItens.splice(posicao, 1);
+  if (listaItens[posicao]) {
+    listaItens.splice(posicao, 1);
+    mostrarTask();
+  }
+}
+
+function recarregarTarefas() {
+  const tarefasDoLocalStorage = localStorage.getItem("lista");
+
+  if (tarefasDoLocalStorage) {
+    listaItens = JSON.parse(tarefasDoLocalStorage);
+  }
 
   mostrarTask();
 }
 
+recarregarTarefas();
 button.addEventListener("click", novaTask);

@@ -10,7 +10,7 @@ body {
 }
 
 .container {
-  background-color: #d1d1d1;
+  background-color: rgba(230, 233, 231, 0.6);
   width: 500px;
   border-radius: 10px;
   padding: 20px;
@@ -30,7 +30,7 @@ body {
   border: none;
   border-radius: 5px;
   height: 40px;
-  background-color: #003329;
+  background-color: #02634f;
   color: #ffffff;
   font-size: 17px;
   padding: 0 15px;
@@ -54,7 +54,7 @@ body {
 }
 
 .task {
-  background-color: #f2f2f2;
+  background-color: #bce0d7;
   box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.2);
   height: 50px;
   display: flex;
@@ -74,4 +74,9 @@ img {
 
 .task:hover img {
   opacity: 1;
+}
+
+.done {
+  background-color: #97ccbc;
+  text-decoration: line-through;
 }
